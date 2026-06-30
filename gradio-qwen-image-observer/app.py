@@ -9,7 +9,7 @@ from openai import OpenAI
 
 MODEL_ID = os.environ.get("LLM_MODEL", "Qwen/Qwen3.5-35B-A3B")
 API_KEY = os.environ.get("MODELSCOPE_API_KEY") or os.environ.get("MODELSCOPE_API_TOKEN", "")
-BASE_URL = os.environ.get("MODELSCOPE_API_BASE", "https://api-inference.modelscope.cn/v1/")
+BASE_URL = os.environ.get("MODELSCOPE_API_BASE", "https://api-inference.modelscope.ai/v1/")
 
 
 SYSTEM_PROMPT = """You are a careful, friendly AI image analysis assistant with visual understanding abilities.
@@ -234,6 +234,43 @@ textarea, input, select {
   border-color: var(--ink) !important;
 }
 
+.english-image-upload .upload-container .wrap {
+  position: relative !important;
+  color: transparent !important;
+}
+
+.english-image-upload .upload-container .wrap * {
+  color: transparent !important;
+}
+
+.english-image-upload .upload-container .wrap:after {
+  content: "Drag image here\\A- or -\\AClick to upload";
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #706c8e;
+  font-size: 16px;
+  line-height: 1.7;
+  pointer-events: none;
+}
+
+.english-image-upload .upload-container .wrap:before {
+  content: "↑";
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 78px);
+  transform: translateX(-50%);
+  color: #706c8e;
+  font-size: 34px;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .footer {
   margin: 20px 0 4px;
   padding: 12px 4px;
@@ -276,6 +313,7 @@ with gr.Blocks(title="Qwen Multimodal Image Observatory", css=PIXEL_CSS) as demo
                 type="filepath",
                 sources=["upload", "clipboard"],
                 height=430,
+                elem_classes=["english-image-upload"],
             )
             task_input = gr.Radio(
                 label="Choose an analysis task",
