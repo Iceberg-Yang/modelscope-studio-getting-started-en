@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Missing Model Weights</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">AI Lab Forensics Console</p>
+        <h1>The Missing Model Weights</h1>
+        <p class="subtitle">A sci-tech mystery console: scan locations, question suspects, assemble the evidence chain, and submit your final deduction.</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" id="saveStatusBtn" type="button">Saved</button>
+        <button class="btn danger" id="restartBtn" type="button">Restart</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="left-panel">
+        <div class="panel map-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Location Map</h2>
+          </div>
+          <div class="map-grid" id="locationMap"></div>
+        </div>
+
+        <div class="panel note-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Investigation Notes</h2>
+          </div>
+          <textarea id="noteInput" placeholder="Record timelines, contradictions, suspicious behavior..."></textarea>
+          <div class="note-actions">
+            <button class="btn primary" id="saveNoteBtn" type="button">Save Notes</button>
+            <span class="hint" id="noteStatus">Notes are saved with your case progress</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="center-panel">
+        <div class="panel scene-panel">
+          <div class="scene-head">
+            <div>
+              <p class="eyebrow" id="sceneEyebrow">Current Location</p>
+              <h2 id="sceneTitle"></h2>
+            </div>
+            <button class="btn primary" id="searchBtn" type="button">Scan Location</button>
+          </div>
+          <p class="scene-desc" id="sceneDesc"></p>
+          <div class="event-log" id="eventLog" aria-live="polite"></div>
+        </div>
+
+        <div class="panel clue-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Collected Clues</h2>
+            <span class="counter" id="clueCount">0</span>
+          </div>
+          <div class="clue-list" id="clueList"></div>
+        </div>
+
+        <div class="panel suspect-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Suspect Files</h2>
+          </div>
+          <div class="suspect-list" id="suspectList"></div>
+        </div>
+      </section>
+
+      <section class="right-panel">
+        <div class="panel inquiry-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Question Suspects</h2>
+          </div>
+          <label for="suspectSelect">Suspect</label>
+          <select id="suspectSelect"></select>
+          <label for="questionSelect">Question</label>
+          <select id="questionSelect"></select>
+          <button class="btn primary wide" id="askBtn" type="button">Ask</button>
+          <div class="dialogue-box" id="dialogueBox">
+            <p>Choose a suspect and a question to view testimony and investigator notes.</p>
+          </div>
+        </div>
+
+        <div class="panel verdict-panel">
+          <div class="panel-title">
+            <span class="dot"></span>
+            <h2>Final Deduction</h2>
+          </div>
+          <label for="finalSuspect">Suspect</label>
+          <select id="finalSuspect"></select>
+          <label for="finalMotive">Motive</label>
+          <select id="finalMotive"></select>
+          <label for="finalEvidence">Key Evidence</label>
+          <select id="finalEvidence"></select>
+          <button class="btn verdict" id="submitVerdictBtn" type="button">Submit Deduction</button>
+          <div class="verdict-result" id="verdictResult"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="game-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
