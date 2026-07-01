@@ -6,7 +6,7 @@ This repository accompanies the “Getting Started with ModelScope Studios” tu
 
 | Folder | Type | What it demonstrates |
 | --- | --- | --- |
-| `gradio-qwen-image-observer` | Gradio | Wrap a ModelScope API Inference model in a simple multimodal image analysis UI. |
+| `gradio-qwen-image-observer` | Gradio | Wrap a ModelScope API Inference model in a minimal model playground UI. |
 | `streamlit-studio-dashboard` | Streamlit | Build an operations dashboard with filters, metrics, charts, anomaly tables, and generated insights. |
 | `static-missing-model-case` | Static | Deploy a pure HTML/CSS/JavaScript mystery game as a static Studio. |
 
