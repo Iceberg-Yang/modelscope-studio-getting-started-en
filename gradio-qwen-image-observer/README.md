@@ -1,24 +1,24 @@
 ---
-title: Qwen Multimodal Image Observatory
+title: ModelScope Model Playground
 sdk: gradio
 app_file: app.py
-colorFrom: purple
-colorTo: cyan
+colorFrom: teal
+colorTo: green
 pinned: true
 ---
 
-# Qwen Multimodal Image Observatory
+# ModelScope Model Playground
 
-This is a Gradio example for the ModelScope Studios getting-started tutorial. It calls `Qwen/Qwen3.5-35B-A3B` through ModelScope API Inference, lets users upload an image, and generates an image description, Studio showcase copy, anime-style character analysis, or extracted visual information.
+This is a minimal Gradio example for the ModelScope Studios getting-started tutorial. It calls a community model through ModelScope API Inference and keeps only two inputs: a text prompt and an optional image. Users can test a text-only language model with text input alone. If `LLM_MODEL` points to a multimodal model, they can also upload an image for text-and-image interaction.
 
-The goal is not to load a large model inside the Studio. Instead, this example shows how to wrap a community model’s API Inference capability into a public, interactive Gradio frontend.
+The goal is not to build a complex page. The example focuses on one core idea: connect a ModelScope community model to a public Gradio frontend.
 
 ## Features
 
-1. Upload an image and analyze it with a multimodal model.
-2. Switch between image description, Studio showcase copy, anime character analysis, and information extraction.
-3. Use a pixel-style interface to demonstrate Gradio layout and custom CSS.
-4. Read the ModelScope token from environment variables instead of hardcoding secrets.
+1. Enter a text prompt and call ModelScope API Inference, which is enough for testing text-only language models.
+2. Optionally upload an image; use image input only when `LLM_MODEL` points to a multimodal model.
+3. Read the ModelScope token from environment variables instead of hardcoding secrets.
+4. Switch the community model with the `LLM_MODEL` environment variable.
 
 ## Environment Variables
 
@@ -26,18 +26,17 @@ The goal is not to load a large model inside the Studio. Instead, this example s
 | --- | --- | --- |
 | `MODELSCOPE_API_KEY` | ModelScope API Inference token | Yes |
 | `MODELSCOPE_API_TOKEN` | Fallback token variable if `MODELSCOPE_API_KEY` is not set | No |
-| `LLM_MODEL` | Model ID, default `Qwen/Qwen3.5-35B-A3B` | No |
-| `MODELSCOPE_API_BASE` | API Inference endpoint, default `https://api-inference.modelscope.cn/v1/` | No |
+| `LLM_MODEL` | ModelScope model ID to try, for example `Qwen/Qwen3.5-35B-A3B` | Yes |
+| `MODELSCOPE_API_BASE` | API Inference endpoint, English site default `https://api-inference.modelscope.ai/v1/` | No |
 
-Token page: https://www.modelscope.cn/my/myaccesstoken
-
-Link replacement required: replace the token page with the corresponding ModelScope international-site link if available.
+Token page: https://www.modelscope.ai/my/myaccesstoken
 
 ## Run Locally
 
 ```bash
 pip install -r requirements.txt
 export MODELSCOPE_API_KEY="your ModelScope token"
+export LLM_MODEL="Qwen/Qwen3.5-35B-A3B"
 python app.py
 ```
 
@@ -52,4 +51,4 @@ gradio-qwen-image-observer/
 └── requirements.txt
 ```
 
-In Deployment settings, select Gradio, Free CPU, and the recommended Environment. Then configure `MODELSCOPE_API_KEY` in Variables. After confirmation, the Studio will launch the Gradio page and call the model through API Inference.
+In Deployment settings, select Gradio, Free CPU, and the recommended Environment. Then configure `MODELSCOPE_API_KEY` and `LLM_MODEL` in Variables. For text-only models, use the text input only. For multimodal models, upload an image as an additional input. After confirmation, the Studio will launch the Gradio page and call the model through API Inference.
